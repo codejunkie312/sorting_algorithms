@@ -4,12 +4,17 @@
  * swap - Swaps two integers
  * @a: The first integer
  * @b: The second integer
+ * @array: The array to be sorted
+ * @size: Number of elements in @array
  */
-void swap(int *a, int *b)
+void swap(int *a, int *b, int *array, size_t size)
 {
 	int temp = *a;
+
 	*a = *b;
 	*b = temp;
+	if (*a != *b)
+		print_array(array, size);
 }
 
 /**
@@ -28,12 +33,11 @@ int partition(int *array, int low, int high, size_t size)
 	{
 		if (array[j] <= pivot)
 		{
-			swap(&array[i], &array[j]);
+			swap(&array[i], &array[j], array, size);
 			i++;
 		}
 	}
-	swap(&array[i], &array[high]);
-	print_array(array, size);
+	swap(&array[i], &array[high], array, size);
 	return (i);
 }
 
@@ -64,5 +68,6 @@ void quicksort_helper(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	quicksort_helper(array, 0, size - 1, size);
+	if (array && size > 1)
+		quicksort_helper(array, 0, size - 1, size);
 }
