@@ -1,11 +1,9 @@
 #include "sort.h"
 
 /**
- * swap - Swaps two integers
+ * swap_1 - Swaps two integers
  * @a: The first integer
  * @b: The second integer
- * @array: The array to be sorted
- * @size: Number of elements in @array
  */
 void swap_1(int *a, int *b)
 {
