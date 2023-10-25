@@ -9,15 +9,15 @@
  */
 void swap2(int *a, int *b, int *array, size_t size)
 {
-    int tmp;
+	int tmp;
 
-    if (*a != *b)
-    {
-        tmp = *a;
-        *a = *b;
-        *b = tmp;
-        print_array(array, size);
-    }
+	if (*a != *b)
+	{
+		tmp = *a;
+		*a = *b;
+		*b = tmp;
+		print_array(array, size);
+	}
 }
 
 /**
@@ -30,29 +30,27 @@ void swap2(int *a, int *b, int *array, size_t size)
  */
 int hoare_partition(int *array, int lo, int hi, size_t size)
 {
-    int pivot, i, j;
+	int pivot, i, j;
 
-    pivot = array[lo];
-    i = lo - 1;
-    j = hi + 1;
+	pivot = array[lo];
+	i = lo - 1;
+	j = hi + 1;
 
-    while (1)
-    {
-        do
-        {
-            i++;
-        } while (array[i] < pivot);
+	while (1)
+	{
+		do {
+			i++;
+		} while (array[i] < pivot);
 
-        do
-        {
-            j--;
-        } while (array[j] > pivot);
+		do {
+			j--;
+		} while (array[j] > pivot);
 
-        if (i >= j)
-            return j;
+		if (i >= j)
+			return (j);
 
-        swap2(&array[i], &array[j], array, size);
-    }
+		swap2(&array[i], &array[j], array, size);
+	}
 }
 
 /**
@@ -64,14 +62,14 @@ int hoare_partition(int *array, int lo, int hi, size_t size)
  */
 void quick_sort_hoare_recur(int *array, int lo, int hi, size_t size)
 {
-    int pivot;
+	int pivot;
 
-    if (lo < hi)
-    {
-        pivot = hoare_partition(array, lo, hi, size);
-        quick_sort_hoare_recur(array, lo, pivot, size);
-        quick_sort_hoare_recur(array, pivot + 1, hi, size);
-    }
+	if (lo < hi)
+	{
+		pivot = hoare_partition(array, lo, hi, size);
+		quick_sort_hoare_recur(array, lo, pivot, size);
+		quick_sort_hoare_recur(array, pivot + 1, hi, size);
+	}
 }
 
 /**
@@ -81,8 +79,8 @@ void quick_sort_hoare_recur(int *array, int lo, int hi, size_t size)
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-    if (array == NULL || size < 2)
-        return;
+	if (array == NULL || size < 2)
+		return;
 
-    quick_sort_hoare_recur(array, 0, size - 1, size);
+	quick_sort_hoare_recur(array, 0, size - 1, size);
 }
