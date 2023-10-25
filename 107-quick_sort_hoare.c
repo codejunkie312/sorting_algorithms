@@ -32,7 +32,7 @@ int hoare_partition(int *array, int lo, int hi, size_t size)
 {
     int pivot, i, j;
 
-    pivot = array[hi];
+    pivot = array[lo];
     i = lo - 1;
     j = hi + 1;
 
